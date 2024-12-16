@@ -3,32 +3,30 @@ package com.harshtech.employee.management.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import org.springframework.data.annotation.Id;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Expense {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long employeeId;
-    private String category;
-    private Double amount;
-    private String status; // PENDING, APPROVED, REJECTED
-    private LocalDateTime createdAt;
 
-    // Getters and Setters
+    private String category;
+    private double amount;
+    private String status = "PENDING"; // Default status
+
+    @ManyToOne
+    private Employee employee;
+
+    private LocalDate dateSubmitted;
+    private LocalDate dateApproved;
+    private String rejectionReason;
+
     public Long getId() {
         return id;
-    }
-
-    public Long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
     }
 
     public String getCategory() {
@@ -39,11 +37,11 @@ public class Expense {
         this.category = category;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -55,11 +53,35 @@ public class Expense {
         this.status = status;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public LocalDate getDateSubmitted() {
+        return dateSubmitted;
+    }
+
+    public void setDateSubmitted(LocalDate dateSubmitted) {
+        this.dateSubmitted = dateSubmitted;
+    }
+
+    public LocalDate getDateApproved() {
+        return dateApproved;
+    }
+
+    public void setDateApproved(LocalDate dateApproved) {
+        this.dateApproved = dateApproved;
+    }
+
+    public String getRejectionReason() {
+        return rejectionReason;
+    }
+
+    public void setRejectionReason(String rejectionReason) {
+        this.rejectionReason = rejectionReason;
     }
 }
