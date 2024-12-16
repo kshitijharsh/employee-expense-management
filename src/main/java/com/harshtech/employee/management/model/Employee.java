@@ -1,13 +1,13 @@
 package com.harshtech.employee.management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
 
 import java.util.List;
 
+/**
+ * Represents an employee in the system.
+ * Created on: 2024-12-15
+ */
 @Entity
 public class Employee {
 
@@ -20,6 +20,10 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee")
     private List<Expense> expenses;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;

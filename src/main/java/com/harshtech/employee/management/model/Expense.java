@@ -1,12 +1,13 @@
 package com.harshtech.employee.management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+/**
+ * Represents an expense submitted by an employee.
+ * Created on: 2024-12-15
+ */
 @Entity
 public class Expense {
 
@@ -24,6 +25,10 @@ public class Expense {
     private LocalDate dateSubmitted;
     private LocalDate dateApproved;
     private String rejectionReason;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;

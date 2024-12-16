@@ -12,20 +12,6 @@ import static org.mockito.Mockito.*;
 
 public class ExpenseServiceTest {
 
-    @Mock
-    private ExpenseRepository expenseRepository;
-
-    @Mock
-    private EmployeeRepository employeeRepository;
-
-    @InjectMocks
-    private ExpenseService expenseService;
-
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
-
     @Test
     public void testSubmitExpense() {
     }

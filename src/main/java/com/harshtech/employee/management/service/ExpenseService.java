@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+/**
+ * Handles business logic for managing expenses.
+ * Created on: 2024-12-15
+ */
 @Service
 public class ExpenseService {
 
@@ -18,14 +22,12 @@ public class ExpenseService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    // Submit expense
     public Expense submitExpense(Long employeeId, Expense expense) {
-        expense.setEmployee(employeeRepository.findById(employeeId).orElseThrow(() -> new RuntimeException("Employee not found")));
+    //    expense.setEmployee(employeeRepository.findById(employeeId).orElseThrow(() -> new RuntimeException("Employee not found")));
         expense.setDateSubmitted(LocalDate.now());
         return expenseRepository.save(expense);
     }
 
-    // Approve expense
     public Expense approveExpense(Long expenseId) {
         Expense expense = expenseRepository.findById(expenseId).orElseThrow(() -> new RuntimeException("Expense not found"));
         expense.setStatus("APPROVED");
@@ -33,7 +35,6 @@ public class ExpenseService {
         return expenseRepository.save(expense);
     }
 
-    // Reject expense
     public Expense rejectExpense(Long expenseId, String reason) {
         Expense expense = expenseRepository.findById(expenseId).orElseThrow(() -> new RuntimeException("Expense not found"));
         expense.setStatus("REJECTED");
