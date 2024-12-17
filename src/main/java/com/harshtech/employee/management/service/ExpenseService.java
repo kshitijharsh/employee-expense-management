@@ -23,7 +23,6 @@ public class ExpenseService {
     private EmployeeRepository employeeRepository;
 
     public Expense submitExpense(Long employeeId, Expense expense) {
-    //    expense.setEmployee(employeeRepository.findById(employeeId).orElseThrow(() -> new RuntimeException("Employee not found")));
         expense.setDateSubmitted(LocalDate.now());
         return expenseRepository.save(expense);
     }
