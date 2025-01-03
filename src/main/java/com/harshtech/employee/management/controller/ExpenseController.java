@@ -21,9 +21,9 @@ public class ExpenseController {
      * Submits a new expense for an employee.
      * Created on: 2024-12-15
      */
-    @PostMapping("/{employeeId}")
-    public Expense submitExpense(@PathVariable Long employeeId, @RequestBody Expense expense) {
-        return expenseService.submitExpense(employeeId, expense);
+    @PostMapping()
+    public Expense submitExpense(@RequestBody Expense expense) {
+        return expenseService.submitExpense(expense);
     }
 
     /**

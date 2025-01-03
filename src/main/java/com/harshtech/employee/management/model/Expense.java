@@ -14,12 +14,16 @@ public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
+    @Column(nullable = false)
     private ExpenseCategory expenseCategory;
+    @Column(nullable = false)
     private double amount;
+    @Column(nullable = false)
     private ExpenseStatus expenseStatus;
+    @Column(nullable = false)
     private LocalDate dateSubmitted;
     private LocalDate dateApproved;
     private String rejectionReason;

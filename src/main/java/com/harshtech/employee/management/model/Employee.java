@@ -2,7 +2,6 @@ package com.harshtech.employee.management.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 
 /**
  * Represents an employee in the system.
@@ -15,11 +14,10 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String email;
-
-    @OneToMany(mappedBy = "employee")
-    private List<Expense> expenses;
 
     public Long getId() {
         return id;
@@ -41,11 +39,4 @@ public class Employee {
         this.email = email;
     }
 
-    public List<Expense> getExpenses() {
-        return expenses;
-    }
-
-    public void setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
-    }
 }
