@@ -29,14 +29,12 @@ public class ExpenseService {
 
     public Expense approveExpense(Long expenseId) {
         Expense expense = expenseRepository.findById(expenseId).orElseThrow(() -> new RuntimeException("Expense not found"));
-        expense.setStatus("APPROVED");
         expense.setDateApproved(LocalDate.now());
         return expenseRepository.save(expense);
     }
 
     public Expense rejectExpense(Long expenseId, String reason) {
         Expense expense = expenseRepository.findById(expenseId).orElseThrow(() -> new RuntimeException("Expense not found"));
-        expense.setStatus("REJECTED");
         expense.setRejectionReason(reason);
         return expenseRepository.save(expense);
     }

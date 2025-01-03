@@ -14,32 +14,34 @@ public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String category;
-    private double amount;
-    private String status = "PENDING"; // Default status
-
     @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
-
+    private ExpenseCategory expenseCategory;
+    private double amount;
+    private ExpenseStatus expenseStatus;
     private LocalDate dateSubmitted;
     private LocalDate dateApproved;
     private String rejectionReason;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getId() {
         return id;
     }
 
-    public String getCategory() {
-        return category;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public ExpenseCategory getExpenseCategory() {
+        return expenseCategory;
+    }
+
+    public void setExpenseCategory(ExpenseCategory expenseCategory) {
+        this.expenseCategory = expenseCategory;
     }
 
     public double getAmount() {
@@ -50,20 +52,12 @@ public class Expense {
         this.amount = amount;
     }
 
-    public String getStatus() {
-        return status;
+    public ExpenseStatus getExpenseStatus() {
+        return expenseStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setExpenseStatus(ExpenseStatus expenseStatus) {
+        this.expenseStatus = expenseStatus;
     }
 
     public LocalDate getDateSubmitted() {

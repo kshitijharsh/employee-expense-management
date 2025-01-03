@@ -21,10 +21,6 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     private List<Expense> expenses;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
     }
