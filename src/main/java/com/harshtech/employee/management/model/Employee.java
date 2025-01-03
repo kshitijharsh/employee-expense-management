@@ -13,7 +13,8 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(nullable = false, unique = true)
+    private String employeeId;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
@@ -39,4 +40,11 @@ public class Employee {
         this.email = email;
     }
 
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
 }
